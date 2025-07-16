@@ -1,0 +1,21 @@
+---
+- name: Create users and copy the passwd file into the users home dir and change permissions
+  hosts: all
+  tasks: 
+    - name: Create users
+      user:
+        name: King2
+        password: 337
+        home: /tmp/King2
+    - name: Copy the /etc/passwd file
+      copy:
+        src: /etc/passwd
+        dest: /tmp/King2
+    - name: Change permissions of the passwd file that we copied
+      file:
+        name: /tmp/King2/passwd
+        state: touch
+        mode: 750
+        owner: King2
+        group: root
+...

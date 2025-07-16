@@ -1,0 +1,18 @@
+---
+- name: Install git on all the servers and clone a remote github repo
+  hosts: all
+  tasks:
+    - name: Install git
+      apt:
+        name: git
+        state: present
+        update_cache: yes
+    - name: Clone a remote github repo
+      git:
+        repo: https://github.com/IntelliqDevops/maven.git
+        dest: /tmp/mygit/
+    - name: Delete the jenkinsfile from the downloaded code
+      file:
+        name: /tmp/mygit/Jenkinsfile
+        state: absent
+...
