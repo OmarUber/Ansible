@@ -1,0 +1,10 @@
+---
+- name: Implementing gloabal scope variables
+  hosts: all
+  tasks:
+    - name: Install/uninstall s/w app's
+      apt:
+        name: "{{a}}"
+        state: "{{b}}"
+        update_cache: "{{c}}"
+...
