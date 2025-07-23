@@ -1,0 +1,7 @@
+---
+- name: Call child playbooks using include_tasks module
+  hosts: all
+  tasks:
+    - name: Call child playbook
+      include_tasks: playbook28.yml
+...
